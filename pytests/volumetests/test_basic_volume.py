@@ -38,6 +38,9 @@ class volume(BaseTestCase):  # will add the __init__ functions after the test ha
         self.vbucket_check = self.input.param("vbucket_check", True)
         self.new_num_writer_threads = self.input.param("new_num_writer_threads", 6)
         self.new_num_reader_threads = self.input.param("new_num_reader_threads", 8)
+        
+    def tearDown(self):
+        pass
 
     def create_required_buckets(self):
         self.log.info("Get the available memory quota")
@@ -397,6 +400,7 @@ class volume(BaseTestCase):  # will add the __init__ functions after the test ha
             self.tasks = []
             self.bucket_util.print_bucket_stats()
             self.get_bucket_dgm(bucket)
+            break
             ########################################################################################################################
             self.log.info("Step 5: Rebalance in with Loading of docs")
             self.generate_docs()
