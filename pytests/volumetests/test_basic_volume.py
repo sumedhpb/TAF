@@ -89,7 +89,7 @@ class volume(BaseTestCase):  # will add the __init__ functions after the test ha
         elif 1 < self.num_buckets == len(bucket_names):
             for i in range(self.num_buckets):
                 bucket = Bucket({"name": bucket_names[i], "ramQuotaMB": ramQuota/self.num_buckets, "maxTTL": duration, "replicaNumber":self.num_replicas,
-                             "evictionPolicy": eviction_policy[i], "bucketType":self.bucket_type[i], "compressionMode":compression_mode[i]})
+                             "evictionPolicy": eviction_policy[0], "bucketType":self.bucket_type[i], "compressionMode":compression_mode[0]})
                 self.bucket_util.create_bucket(bucket)
         else:
             self.fail("Number of bucket/Names not sufficient")
